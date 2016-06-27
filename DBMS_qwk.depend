@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1466733993 source:d:\g(unknown)\dbms_qwk\main.cpp
+	"stdio.h"
+	"stdlib.h"
+	"string.h"
+	"conio.h"
+	"windows.h"
+	"iostream"
+	"power.h"
+	<sstream>
+
+1466601076 d:\g(unknown)\dbms_qwk\power.h
+	"windows.h"
+	<time.h>
+	<ctype.h>
+
