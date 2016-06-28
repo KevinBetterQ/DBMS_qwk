@@ -1,0 +1,20 @@
+help database   
+help table
+help view
+help index
+
+create table students(Sno char,Sname char,Sage int);
+insert into students value(01,qwk,18);
+create index students on students(Sno,Sage);
+create view stuv as select * from students;
+update students set Sage=22 where Sno=01;
+select Sno,Sname from students where Sno=01 and Sage=18;
+select Sno,Sage from students where Sno<02 and Sage=18;
+select * from students
+drop index Stu
+drop view stuv
+drop table students
+delete from students where Sno=01
+grant select on table students to a
+revoke select on table students from a
+

@@ -380,60 +380,8 @@ eotc1:;
 	fprintf(alfp,"用户建立表成功,表的内容是:表名:%s,表属性个数:%d,主键:%s.",tnew.tname,
 								tnew.pro_num,tnew.key);fputc('\n',alfp);
 }
-void tablecreate2();
 
-void tabledrop()
-{
-	if(CURRENTREVOKE==0)
-	{
-		gotoxy(1,24);printf("\a对不起,您的权限不允许这项操作.按任意键返回...");
-		getch();
-		return;
-	}
-	if(!dbislock())		//没有锁，那就加锁@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		dblock();	//dblock();     dbunlock();
-	else
-	{
-		clrscr();
-		printf("数据库处于锁状态，即使超级用户也不能进行修改!\a");
-		printf("\n按任意键返回...");
-		getch();
-		return;
-	}
-	clrscr();
-	char mn[MAX_TNAME];
-	int i,j;
-	table tdel;
-	gotoxy(37,7);setcolor(0,14);
-	printf("表删除操作");setcolor(0,15);
-	DrawFrame(20,60,5,14);
-	gotoxy(27,9); printf("输入删除的表名:");
-	cin>>mn;
-	//添加错误处理
-	for(i=0;i<t_num;i++)
-		if(strcmp(mn,t[i].tname)==0)
-		{
-			//i的值就是要删除的表的位置.
-			tdel=t[i];
-			for(j=i;j<t_num-1;j++)
-				t[j]=t[j+1];
-			t_num--;
-			goto eodrp;
-		}
-	gotoxy(1,20);printf("未找到要删除的表,请确认输入.\a");
-	getchar();
-	dbunlock();
-	return;
-eodrp:;
-	gotoxy(1,20);
-	printf("表%s被成功的删除!回车返回上一级菜单.",mn);
-	getch();
-	dbunlock();
-		fprintf(alfp,"\n[%d年%d月%d日 %d:%d:%d]执行如下操作:\n",GetCurrentYear(),GetCurrentMonth(),GetCurrentDay(),
-									GetCurrentHour(),GetCurrentMinute(),GetCurrentSecond() );
-	fprintf(alfp,"用户成功删除一个表,表的内容是:表名:%s,表属性个数:%d,主键:%s.",tdel.tname,
-								tdel.pro_num,tdel.key);fputc('\n',alfp);
-}
+
 
 void tableprint(table *t1)//输出表
 {
@@ -917,56 +865,6 @@ asqq:;
 	getch();
 	if(dbislock())
 			dbunlock();
-}
-void viewdrop()
-{
-	if(CURRENTREVOKE==0)
-	{
-		gotoxy(1,24);printf("\a对不起,您的权限不允许这项操作.按任意键返回...");
-		getch();
-		return;
-	}
-	if(!dbislock())		//没有锁，那就加锁@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		dblock();	//dblock();     dbunlock();
-	else
-	{
-		clrscr();
-		printf("数据库处于锁状态，即使超级用户也不能进行修改!\a");
-		printf("\n按任意键返回...");
-		getch();
-		return;
-	}
-	clrscr();
-	char mn[MAX_TNAME];	//为了错误处理所建立的变量
-	int i;
-	gotoxy(37,7);setcolor(0,14);
-	printf("放弃视图");setcolor(0,15);
-	DrawFrame(20,60,5,14);
-	gotoxy(27,9); printf("输入视图名:");
-	gets(mn);	//输入视图名
-	//添加错误处理，重名的视图等等
-	if(v_num<=0)
-	{
-		gotoxy(1,20);
-		printf("视图数为0，无法删除视图\a");
-	}
-	for(i=0;i<v_num;i++)
-	{
-		if(strcmp(mn,vi[i].vname)==0)
-			goto ae;
-	}
-	printf("\n没有找到该视图%s\a",mn);
-	getch();
-	if(dbislock())
-		dbunlock();
-	return;
-ae:;for(;i<v_num-1;i++)
-		vi[i]=vi[i+1];
-	v_num--;
-	printf("\n删除视图成功! 按回车返回上一级菜单。");
-	getch();
-	if(dbislock())
-		dbunlock();
 }
 void viewtable()
 {

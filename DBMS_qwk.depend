@@ -14,3 +14,18 @@
 	<time.h>
 	<ctype.h>
 
+1467079770 source:d:\f(data)\f\unversity\subjects\数据库系统\qwk_课程设计\dbms_qwk\main.cpp
+	"stdio.h"
+	"stdlib.h"
+	"string.h"
+	"conio.h"
+	"windows.h"
+	"iostream"
+	"power.h"
+	<sstream>
+
+1466601076 d:\f(data)\f\unversity\subjects\数据库系统\qwk_课程设计\dbms_qwk\power.h
+	"windows.h"
+	<time.h>
+	<ctype.h>
+

@@ -1,6 +1,6 @@
 文件说明：
 
-db2.cpp      C++源代码文件
+DBMS_qwk.cpp      C++源代码文件
 power.h      包含的功能函数等的头文件
 backup.db    一次备份文件，可从中恢复许多信息
 table.db     存表、记录的文件
